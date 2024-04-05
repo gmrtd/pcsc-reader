@@ -1,0 +1,80 @@
+name: SonarCloud analysis
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+  Build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Install libpcsclite-dev
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install libpcsclite-dev
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.22'
+    - name: Build
+      run: go build -v ./...
+    - name: Test Coverage
+      run: go test -coverprofile=coverage.out
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage.out
+        path: coverage.out
+    - name: Test Result
+      run: go test -json > report.json
+    - name: Archive test report
+      uses: actions/upload-artifact@v4
+      with:
+        name: report.json
+        path: report.json
+
+  Analysis:
+    needs: build
+    name: Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@master
+      - name: Download coverage results
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage.out
+      - name: Download test report
+        uses: actions/download-artifact@v4
+        with:
+          name: report.json
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+        with:
+          # Additional arguments for the sonarcloud scanner
+          args:
+            # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
+            # mandatory
+            -Dsonar.projectKey=gmrtd_gmrtd
+            -Dsonar.organization=gmrtd
+            -Dsonar.sources=.
+            -Dsonar.exclusions=**/*_test.go,**/vendor/**
+            -Dsonar.tests=.
+            -Dsonar.test.inclusions=**/*_test.go
+            -Dsonar.test.exclusions=**/vendor/**
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.go.coverage.reportPaths=coverage.out
+            -Dsonar.go.tests.reportPaths=report.json
