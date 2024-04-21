@@ -1,5 +1,8 @@
 ** MRTD DOCUMENT OUTPUT **
 
+LDS version: {{.LdsVersion}}
+Unicode version: {{.UnicodeVersion}}
+
 CardAccess:
 {{if .CardAccess}}
 {{.CardAccess.RawData | BytesToHex}}

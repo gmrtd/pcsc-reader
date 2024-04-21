@@ -16,3 +16,11 @@ github.com/gmrtd/gmrtd v0.0.0-20240414144323-3a4856fad335 h1:qLmQlW8fTnJo4o8Si3U
 github.com/gmrtd/gmrtd v0.0.0-20240414144323-3a4856fad335/go.mod h1:GOsa+sinL9/Tu1I7V+wpgwvOUiptDyCeGNeEG3hwcwk=
 github.com/gmrtd/gmrtd v0.0.0-20240416122728-a80533447cc3 h1:b1+ihgFHjj7LKG5Xm8biotz5ovQ1yqNtMds1EhZt6MM=
 github.com/gmrtd/gmrtd v0.0.0-20240416122728-a80533447cc3/go.mod h1:GOsa+sinL9/Tu1I7V+wpgwvOUiptDyCeGNeEG3hwcwk=
+github.com/gmrtd/gmrtd v0.0.0-20240417133933-add66ae6d72c h1:WpQkKCaHRB4OeF+YKqqcqlXL0M9q5+vYkoOMjMqSIIw=
+github.com/gmrtd/gmrtd v0.0.0-20240417133933-add66ae6d72c/go.mod h1:GOsa+sinL9/Tu1I7V+wpgwvOUiptDyCeGNeEG3hwcwk=
+github.com/gmrtd/gmrtd v0.0.0-20240420132136-f5aaf8706f4a h1:VKKNNuQKrTSzM5XlyI8mb1V9wZu3IWRVkH5Jm6cDwBk=
+github.com/gmrtd/gmrtd v0.0.0-20240420132136-f5aaf8706f4a/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
+github.com/gmrtd/gmrtd v0.0.0-20240420155629-331da7faa4b0 h1:EFq0pJ/EIIUCglUOAR69dFsFW+Op/Lukllah20WGU4g=
+github.com/gmrtd/gmrtd v0.0.0-20240420155629-331da7faa4b0/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
+github.com/gmrtd/gmrtd v0.0.0-20240421094028-e8094cc2ae2e h1:DhmVz2l5vzmIkprJxUrEquqrrugvhdE+ppsmoIklxbU=
+github.com/gmrtd/gmrtd v0.0.0-20240421094028-e8094cc2ae2e/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
