@@ -24,3 +24,7 @@ github.com/gmrtd/gmrtd v0.0.0-20240420155629-331da7faa4b0 h1:EFq0pJ/EIIUCglUOAR6
 github.com/gmrtd/gmrtd v0.0.0-20240420155629-331da7faa4b0/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
 github.com/gmrtd/gmrtd v0.0.0-20240421094028-e8094cc2ae2e h1:DhmVz2l5vzmIkprJxUrEquqrrugvhdE+ppsmoIklxbU=
 github.com/gmrtd/gmrtd v0.0.0-20240421094028-e8094cc2ae2e/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
+github.com/gmrtd/gmrtd v0.0.0-20240421152139-a06a98e49768 h1:ifnCGwaEreIlt3IjyO/b3J6D43PeiCYqcYNHlgcqi0w=
+github.com/gmrtd/gmrtd v0.0.0-20240421152139-a06a98e49768/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
+github.com/gmrtd/gmrtd v0.0.0-20240422144559-504c7af9da21 h1:+ovduf1m/bR9vWE3oDdTglJLug+STe8SgQNPcAZD3A0=
+github.com/gmrtd/gmrtd v0.0.0-20240422144559-504c7af9da21/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=

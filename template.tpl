@@ -43,6 +43,17 @@ DG1:
 {{.Dg1.RawData | BytesToHex}}
 
 {{.Dg1.RawData | TlvBytesToString}}
+
+DocumentCode  : {{.Dg1.Mrz.DocumentCode}}
+IssuingState  : {{.Dg1.Mrz.IssuingState}}
+NameOfHolder  : {{.Dg1.Mrz.NameOfHolder}}
+DocumentNumber: {{.Dg1.Mrz.DocumentNumber}}
+Nationality   : {{.Dg1.Mrz.Nationality}}
+DateOfBirth   : {{.Dg1.Mrz.DateOfBirth}}
+Sex           : {{.Dg1.Mrz.Sex}}
+DateOfExpiry  : {{.Dg1.Mrz.DateOfExpiry}}
+OptionalData  : {{.Dg1.Mrz.OptionalData}}
+OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 {{end}}
 
 DG2:
