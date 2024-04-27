@@ -1,49 +1,102 @@
-** MRTD DOCUMENT OUTPUT **
+<html>
+<head>
+<style>
+h1 {
+    background-color:SkyBlue
+}
+h2 {
+    background-color:Silver
+}
+</style>
+</head>
+<body>
+<h1>MRTD DOCUMENT OUTPUT</h1>
 
+<div><pre>
 LDS version: {{.LdsVersion}}
 Unicode version: {{.UnicodeVersion}}
+</pre></div>
 
-CardAccess:
+<pre><div>
+ChipAuthStatus: {{.ChipAuthStatus}}
+</pre></div>
+
+<h2>CardAccess</h2>
 {{if .CardAccess}}
+<div><pre>
 {{.CardAccess.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.CardAccess.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-CardSecurity:
+<h2>CardSecurity</h2>
 {{if .CardSecurity}}
+<div><pre>
 {{.CardSecurity.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.CardSecurity.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DIR:
+<h2>DIR</h2>
 {{if .Dir}}
+<div><pre>
 {{.Dir.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dir.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-COM:
+<h2>COM</h2>
 {{if .Com}}
+<div><pre>
 {{.Com.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Com.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-SOD:
+<h2>SOD</h2>
 {{if .Sod}}
+<div><pre>
 {{.Sod.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Sod.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG1:
+<h2>DG1</h2>
 {{if .Dg1}}
+<div><pre>
 {{.Dg1.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg1.RawData | TlvBytesToString}}
+</pre></div>
 
+<div><pre>
 DocumentCode  : {{.Dg1.Mrz.DocumentCode}}
 IssuingState  : {{.Dg1.Mrz.IssuingState}}
 NameOfHolder  : {{.Dg1.Mrz.NameOfHolder}}
@@ -54,62 +107,114 @@ Sex           : {{.Dg1.Mrz.Sex}}
 DateOfExpiry  : {{.Dg1.Mrz.DateOfExpiry}}
 OptionalData  : {{.Dg1.Mrz.OptionalData}}
 OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG2:
+<h2>DG2</h2>
 {{if .Dg2}}
+<div><pre>
 {{.Dg2.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg2.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG7:
+<h2>DG7</h2>
 {{if .Dg7}}
+<div><pre>
 {{.Dg7.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg7.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG11:
+<h2>DG11</h2>
 {{if .Dg11}}
+<div><pre>
 {{.Dg11.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg11.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG12:
+<h2>DG12</h2>
 {{if .Dg12}}
+<div><pre>
 {{.Dg12.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg12.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG13:
+<h2>DG13</h2>
 {{if .Dg13}}
+<div><pre>
 {{.Dg13.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg13.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG14:
+<h2>DG14</h2>
 {{if .Dg14}}
+<div><pre>
 {{.Dg14.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg14.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG15:
+<h2>DG15</h2>
 {{if .Dg15}}
+<div><pre>
 {{.Dg15.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg15.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-DG16:
+<h2>DG16</h2>
 {{if .Dg16}}
+<div><pre>
 {{.Dg16.RawData | BytesToHex}}
+</pre></div>
 
+<div><pre>
 {{.Dg16.RawData | TlvBytesToString}}
+</pre></div>
+{{else}}
+<i>No data</i>
 {{end}}
 
-ChipAuthStatus: {{.ChipAuthStatus}}
+</body>
+</html>

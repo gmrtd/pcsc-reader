@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"html/template"
@@ -10,6 +11,7 @@ import (
 
 	"github.com/dumacp/smartcard/pcsc"
 	"github.com/gmrtd/gmrtd"
+	"github.com/pkg/browser"
 )
 
 type PCSCTransceiver struct {
@@ -31,6 +33,8 @@ func (transceiver *PCSCTransceiver) Transceive(cApdu []byte) (rApduBytes []byte)
 var temp *template.Template
 
 func outputDocument(document *gmrtd.Document) {
+	var err error
+
 	if document == nil {
 		return
 	}
@@ -46,7 +50,16 @@ func outputDocument(document *gmrtd.Document) {
 
 	temp = template.Must(template.New("template.tpl").Funcs(funcMap).ParseFiles("template.tpl"))
 
-	err := temp.Execute(os.Stdout, document)
+	byteBuf := bytes.NewBuffer(nil)
+
+	// convert to HTML using template
+	err = temp.Execute(byteBuf, document)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// display in default browser
+	err = browser.OpenReader(byteBuf)
 	if err != nil {
 		log.Fatalln(err)
 	}
