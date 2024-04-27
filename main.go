@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/base64"
 	"flag"
 	"fmt"
 	"html/template"
@@ -46,6 +47,7 @@ func outputDocument(document *gmrtd.Document) {
 	funcMap := template.FuncMap{
 		"BytesToHex":       func(bytes []byte) string { return fmt.Sprintf("%X", bytes) },
 		"TlvBytesToString": func(bytes []byte) string { return gmrtd.TlvDecode(bytes).String() },
+		"BytesToBase64":    func(bytes []byte) string { return base64.StdEncoding.EncodeToString(bytes) },
 	}
 
 	temp = template.Must(template.New("template.tpl").Funcs(funcMap).ParseFiles("template.tpl"))

@@ -121,6 +121,15 @@ OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 <div><pre>
 {{.Dg2.RawData | TlvBytesToString}}
 </pre></div>
+
+<!-- TODO - would be good got DG2 to provide an easier way to access the images -->
+{{ range .Dg2.BITs }}
+    {{ range .BDB.Facial.Images }}
+        <img src="data:image/jpeg;base64,{{.Data | BytesToBase64}}" />
+    {{ end }}
+{{ end }}
+
+
 {{else}}
 <i>No data</i>
 {{end}}
