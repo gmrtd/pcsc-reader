@@ -99,7 +99,7 @@ ChipAuthStatus: {{.ChipAuthStatus}}
 <div><pre>
 DocumentCode  : {{.Dg1.Mrz.DocumentCode}}
 IssuingState  : {{.Dg1.Mrz.IssuingState}}
-NameOfHolder  : {{.Dg1.Mrz.NameOfHolder}}
+NameOfHolder  : [Primary] {{.Dg1.Mrz.NameOfHolder.Primary}} [Secondary] {{.Dg1.Mrz.NameOfHolder.Secondary}}
 DocumentNumber: {{.Dg1.Mrz.DocumentNumber}}
 Nationality   : {{.Dg1.Mrz.Nationality}}
 DateOfBirth   : {{.Dg1.Mrz.DateOfBirth}}
