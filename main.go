@@ -26,7 +26,7 @@ func (transceiver *PCSCTransceiver) Transceive(cApdu []byte) (rApduBytes []byte)
 		return
 	}
 
-	slog.Debug("Transceive", "cApdu", cApdu, "rApdu", rApduBytes)
+	slog.Debug("Transceive", "cApdu", gmrtd.BytesToHex(cApdu), "rApdu", gmrtd.BytesToHex(rApduBytes))
 
 	return
 }
