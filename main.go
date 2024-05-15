@@ -145,6 +145,7 @@ func main() {
 		slog.Error("No chip detected")
 		os.Exit(1)
 	}
+	defer card.DisconnectCard()
 
 	var transceiver *PCSCTransceiver = new(PCSCTransceiver)
 
