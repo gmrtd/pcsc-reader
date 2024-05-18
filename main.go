@@ -48,6 +48,13 @@ func outputDocument(document *gmrtd.Document) {
 		"BytesToHex":       func(bytes []byte) string { return fmt.Sprintf("%X", bytes) },
 		"TlvBytesToString": func(bytes []byte) string { return gmrtd.TlvDecode(bytes).String() },
 		"BytesToBase64":    func(bytes []byte) string { return base64.StdEncoding.EncodeToString(bytes) },
+		"ApduTotalDurMs": func(apdus []gmrtd.ApduLog) int {
+			var totalMs int
+			for _, apdu := range apdus {
+				totalMs += apdu.DurMs
+			}
+			return totalMs
+		},
 	}
 
 	temp = template.Must(template.New("template.tpl").Funcs(funcMap).ParseFiles("template.tpl"))
@@ -147,11 +154,14 @@ func main() {
 	}
 	defer card.DisconnectCard()
 
+	atr, _ := card.ATR()
+	ats, _ := card.ATS()
+
 	var transceiver *PCSCTransceiver = new(PCSCTransceiver)
 
 	transceiver.card = card
 
-	document, err := gmrtd.ReadDocument(transceiver, password)
+	document, err := gmrtd.ReadDocument(transceiver, password, atr, ats)
 	if err != nil {
 		// output whatever we have from the document
 		outputDocument(document)

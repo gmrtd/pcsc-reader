@@ -8,17 +8,23 @@ h2 {
     background-color:Silver
 }
 </style>
+<title>GMRTD</title>
 </head>
 <body>
-<h1>MRTD DOCUMENT OUTPUT</h1>
+<h1>MRTD DOCUMENT</h1>
 
 <div><pre>
-LDS version: {{.LdsVersion}}
-Unicode version: {{.UnicodeVersion}}
+LDS version: <b>{{.LdsVersion}}</b>
+Unicode version: <b>{{.UnicodeVersion}}</b>
 </pre></div>
 
 <pre><div>
-ChipAuthStatus: {{.ChipAuthStatus}}
+ChipAuthStatus: <b>{{.ChipAuthStatus}}</b>
+</pre></div>
+
+<pre><div>
+ATR: {{.Atr | BytesToHex}}
+ATS: {{.Ats | BytesToHex}}
 </pre></div>
 
 <h2>CardAccess</h2>
@@ -226,6 +232,9 @@ OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 {{end}}
 
 <h1>APDU LOG</h1>
+
+<h2>Count: {{len .Apdus}}</h2>
+<h2>Duration(ms): {{.Apdus | ApduTotalDurMs}}</h2>
 
 {{ range .Apdus }}
     <div><pre>Dur(ms): {{ .DurMs }}</pre></div>
