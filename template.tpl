@@ -225,5 +225,18 @@ OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 <i>No data</i>
 {{end}}
 
+<h1>APDU LOG</h1>
+
+{{ range .Apdus }}
+    <div><pre>Dur(ms): {{ .DurMs }}</pre></div>
+    <div><pre>-> {{ .Tx | BytesToHex }}</pre></div>
+    {{if .Child}}
+        <div><pre>--> {{ .Child.Tx | BytesToHex }}</pre></div>
+        <div><pre><-- {{ .Child.Rx | BytesToHex }}</pre></div>
+    {{end}}
+    <div><pre><- {{ .Rx | BytesToHex }}</pre></div>
+    <hr>
+{{ end }}
+
 </body>
 </html>
