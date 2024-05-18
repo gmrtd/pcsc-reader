@@ -22,7 +22,7 @@ Unicode version: <b>{{.UnicodeVersion}}</b>
 ChipAuthStatus: <b>{{.ChipAuthStatus}}</b>
 </pre></div>
 
-<pre><div>
+<div><pre>
 ATR: {{.Atr | BytesToHex}}
 ATS: {{.Ats | BytesToHex}}
 </pre></div>
@@ -237,14 +237,19 @@ OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 <h2>Duration(ms): {{.Apdus | ApduTotalDurMs}}</h2>
 
 {{ range .Apdus }}
-    <div><pre>Dur(ms): {{ .DurMs }}</pre></div>
-    <div><pre>-> {{ .Tx | BytesToHex }}</pre></div>
+<div><pre>
+Desc: <b>{{ .Desc }}</b>
+Dur(ms): <b>{{ .DurMs }}</b>
+</pre></div>
+<div><pre>
+-> {{ .Tx | BytesToHex }}
     {{if .Child}}
-        <div><pre>--> {{ .Child.Tx | BytesToHex }}</pre></div>
-        <div><pre><-- {{ .Child.Rx | BytesToHex }}</pre></div>
+--> {{ .Child.Tx | BytesToHex }}
+<-- {{ .Child.Rx | BytesToHex }}
     {{end}}
-    <div><pre><- {{ .Rx | BytesToHex }}</pre></div>
-    <hr>
+<- {{ .Rx | BytesToHex }}
+</pre></div>
+<hr>
 {{ end }}
 
 </body>
