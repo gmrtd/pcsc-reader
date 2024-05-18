@@ -11,7 +11,8 @@ h2 {
 <title>GMRTD</title>
 </head>
 <body>
-<h1>MRTD DOCUMENT</h1>
+
+<h1>GMRTD</h1>
 
 <div><pre>
 LDS version: <b>{{.LdsVersion}}</b>
@@ -132,6 +133,8 @@ OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 {{ range .Dg2.BITs }}
     {{ range .BDB.Facial.Images }}
         <img src="data:image/jpeg;base64,{{.Data | BytesToBase64}}" />
+        <br/>
+        Image size (bytes): {{len .Data}}
     {{ end }}
 {{ end }}
 
