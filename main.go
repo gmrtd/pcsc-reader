@@ -74,29 +74,30 @@ func outputDocument(document *gmrtd.Document) {
 	}
 }
 
-func getParams() (password *gmrtd.Password, debug bool, err error) {
+func getParams() (password *gmrtd.Password, debug bool, apduMaxRead uint, err error) {
 	documentNo := flag.String("doc", "", "Document Number")
 	dateOfBirth := flag.String("dob", "", "Date of Birth (YYMMDD)")
 	expiryDate := flag.String("exp", "", "Expiry Date (YYMMDD)")
 	can := flag.String("can", "", "Card Access Number")
 	debugFlag := flag.Bool("debug", false, "Debug")
+	maxRead := flag.Uint("maxRead", 0, "Maximum read amount (bytes) e.g. 1..65536")
 
 	flag.Parse()
 
 	if len(*documentNo) > 0 && len(*dateOfBirth) == 6 && len(*expiryDate) == 6 {
 		password = gmrtd.NewPasswordMrzi(*documentNo, *dateOfBirth, *expiryDate)
-
 	} else if len(*can) > 0 {
 		password = gmrtd.NewPasswordCan(*can)
 	} else {
-		return nil, false, fmt.Errorf("usage: must speciffy either doc+dob+exp *OR* can")
+		flag.PrintDefaults()
+		return nil, false, 0, fmt.Errorf("usage: must specify either doc+dob+exp *OR* can")
 	}
 
-	log.Printf("Doc:%s, DOB:%s, Exp:%s, CAN:%s, Debug:%t", *documentNo, *dateOfBirth, *expiryDate, *can, *debugFlag)
+	log.Printf("Doc:%s, DOB:%s, Exp:%s, CAN:%s, Debug:%t, MaxRead:%d", *documentNo, *dateOfBirth, *expiryDate, *can, *debugFlag, *maxRead)
 
 	log.Printf("Password: %+v", password)
 
-	return password, *debugFlag, nil
+	return password, *debugFlag, *maxRead, nil
 }
 
 func initLogging(debug bool) {
@@ -115,11 +116,12 @@ func main() {
 
 	var password *gmrtd.Password
 	var debug bool = false
+	var maxRead uint = 0
 	var err error
 
-	password, debug, err = getParams()
+	password, debug, maxRead, err = getParams()
 	if err != nil {
-		slog.Error("%s", err)
+		log.Printf("%s", err)
 		os.Exit(1)
 	}
 
@@ -145,9 +147,9 @@ func main() {
 	}
 
 	// NB we currently just select the 1st reader (if multiple)
-	reader := pcsc.NewReader(ctx, readers[0])
+	pcscReader := pcsc.NewReader(ctx, readers[0])
 
-	card, err := reader.ConnectCardPCSC()
+	card, err := pcscReader.ConnectCardPCSC()
 	if err != nil {
 		slog.Error("No chip detected")
 		os.Exit(1)
@@ -161,7 +163,14 @@ func main() {
 
 	transceiver.card = card
 
-	document, err := gmrtd.ReadDocument(transceiver, password, atr, ats)
+	var reader *gmrtd.Reader = gmrtd.NewReader()
+
+	// set APDU Max Read (if specified)
+	if maxRead > 0 {
+		reader.SetApduMaxLe(int(maxRead))
+	}
+
+	document, err := reader.ReadDocument(transceiver, password, atr, ats)
 	if err != nil {
 		// output whatever we have from the document
 		outputDocument(document)
