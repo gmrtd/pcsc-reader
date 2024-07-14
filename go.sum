@@ -2,6 +2,8 @@ github.com/aead/cmac v0.0.0-20160719120800-7af84192f0b1 h1:+JkXLHME8vLJafGhOH4ao
 github.com/aead/cmac v0.0.0-20160719120800-7af84192f0b1/go.mod h1:nuudZmJhzWtx2212z+pkuy7B6nkBqa+xwNXZHL1j8cg=
 github.com/dumacp/smartcard v0.1.4 h1:NhMOxixcv0fzvtLSMRHGdL6RD6pnVajjhccyxMieUI4=
 github.com/dumacp/smartcard v0.1.4/go.mod h1:qLQLuYHKbY97/VydBGf/JfGkgHw9OgRdOppcd5J7UGw=
+github.com/dumacp/smartcard v0.1.5 h1:5dEvpz0wkJRKtM/qfvQQzEdD3vS8czJqiVr2LPlC32c=
+github.com/dumacp/smartcard v0.1.5/go.mod h1:qLQLuYHKbY97/VydBGf/JfGkgHw9OgRdOppcd5J7UGw=
 github.com/ebfe/brainpool v0.0.0-20130314170211-492e4d960f63 h1:SgffrhTmRVa2og8dfLHmZizJvSZ5Sm28jQUHuD+/x7Y=
 github.com/ebfe/brainpool v0.0.0-20130314170211-492e4d960f63/go.mod h1:/t8YeteVG5vsrG4X4wBPLBhru5JdXpHR9EwW0xMb3mE=
 github.com/ebfe/scard v0.0.0-20230420082256-7db3f9b7c8a7 h1:HYAhfGa9dEemCZgGZWL5AvVsctBCsHxl2CI0HUXzHQE=
@@ -40,9 +42,13 @@ github.com/gmrtd/gmrtd v0.0.0-20240425142544-3b2bed83b4e6 h1:HFXD/S0nyWrIp+GFAWa
 github.com/gmrtd/gmrtd v0.0.0-20240425142544-3b2bed83b4e6/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
 github.com/gmrtd/gmrtd v0.0.0-20240630033517-2a49d86315b9 h1:QwIjDTm4KNCrVtK3PHfiuNvopc7M9hS4UxQ9xdIslq0=
 github.com/gmrtd/gmrtd v0.0.0-20240630033517-2a49d86315b9/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
+github.com/gmrtd/gmrtd v0.0.0-20240714160803-273738c15e41 h1:YQmQp/Z40gcmUYxJtriJBJzVHzd/LePfxy54S7+ib/A=
+github.com/gmrtd/gmrtd v0.0.0-20240714160803-273738c15e41/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
 github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c h1:+mdjkGKdHQG3305AYmdv1U2eRNDiU2ErMBj1gwrq8eQ=
 github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c/go.mod h1:7rwL4CYBLnjLxUqIJNnCWiEdr3bn6IUYi15bNlnbCCU=
 golang.org/x/sys v0.1.0 h1:kunALQeHf1/185U1i0GOB/fy1IPRDDpuoOOqRReG57U=
 golang.org/x/sys v0.1.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.19.0 h1:q5f1RH2jigJ1MoAWp2KTp3gm5zAGFUTarQZ5U386+4o=
 golang.org/x/sys v0.19.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+golang.org/x/sys v0.22.0 h1:RI27ohtqKCnwULzJLqkv897zojh5/DwS/ENaMzUOaWI=
+golang.org/x/sys v0.22.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
