@@ -165,6 +165,23 @@ OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 <div><pre>
 {{.Dg11.RawData | TlvBytesToString}}
 </pre></div>
+
+<div><pre>
+NameOfHolder        : {{.Dg11.Details.NameOfHolder}}
+OtherNames          : {{.Dg11.Details.OtherNames}}
+PersonalNumber      : {{.Dg11.Details.PersonalNumber}}
+FullDateOfBirth     : {{.Dg11.Details.FullDateOfBirth}}
+PlaceOfBirth        : {{.Dg11.Details.PlaceOfBirth}}
+Address             : {{.Dg11.Details.Address}}
+Telephone           : {{.Dg11.Details.Telephone}}
+Profession          : {{.Dg11.Details.Profession}}
+Title               : {{.Dg11.Details.Title}}
+PersonalSummary     : {{.Dg11.Details.PersonalSummary}}
+ProofOfCitizenship  : {{.Dg11.Details.ProofOfCitizenship | BytesToHex}}
+OtherTravelDocuments: {{.Dg11.Details.OtherTravelDocuments}}
+CustodyInformation  : {{.Dg11.Details.CustodyInformation}}
+</div></pre>
+
 {{else}}
 <i>No data</i>
 {{end}}
@@ -178,6 +195,19 @@ OptionalData2 : {{.Dg1.Mrz.OptionalData2}}
 <div><pre>
 {{.Dg12.RawData | TlvBytesToString}}
 </pre></div>
+
+<div><pre>
+IssuingAuthority           : {{.Dg12.Details.IssuingAuthority}}
+DateOfIssue                : {{.Dg12.Details.DateOfIssue}}
+OtherPersons               : {{.Dg12.Details.OtherPersons}}
+EndorsementsAndObservations: {{.Dg12.Details.EndorsementsAndObservations}}
+TaxExitRequirements        : {{.Dg12.Details.TaxExitRequirements}}
+ImageFront                 : {{.Dg12.Details.ImageFront | BytesToHex}}
+ImageRear                  : {{.Dg12.Details.ImageRear | BytesToHex}}
+PersoDateTime              : {{.Dg12.Details.PersoDateTime}}
+PersoSystemSerialNumber    : {{.Dg12.Details.PersoSystemSerialNumber}}
+</pre></div>
+
 {{else}}
 <i>No data</i>
 {{end}}
