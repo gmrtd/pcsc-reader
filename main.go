@@ -178,8 +178,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	// TODO - passive auth doesn't currently do anything
-	gmrtd.MrtdPassiveAuth(document)
+	// TODO - should really happen before outputDocument (above).. and info should be included
+	err = gmrtd.MrtdPassiveAuth(document)
+	if err != nil {
+		slog.Error("MrtdPassiveAuth", "error", err)
+		os.Exit(1)
+	}
 
 	outputDocument(document)
 }
