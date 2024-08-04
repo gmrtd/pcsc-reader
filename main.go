@@ -12,6 +12,11 @@ import (
 
 	"github.com/dumacp/smartcard/pcsc"
 	"github.com/gmrtd/gmrtd"
+	"github.com/gmrtd/gmrtd/document"
+	"github.com/gmrtd/gmrtd/iso7816"
+	"github.com/gmrtd/gmrtd/password"
+	"github.com/gmrtd/gmrtd/tlv"
+	"github.com/gmrtd/gmrtd/utils"
 	"github.com/pkg/browser"
 )
 
@@ -26,14 +31,14 @@ func (transceiver *PCSCTransceiver) Transceive(cApdu []byte) (rApduBytes []byte)
 		return
 	}
 
-	slog.Debug("Transceive", "cApdu", gmrtd.BytesToHex(cApdu), "rApdu", gmrtd.BytesToHex(rApduBytes))
+	slog.Debug("Transceive", "cApdu", utils.BytesToHex(cApdu), "rApdu", utils.BytesToHex(rApduBytes))
 
 	return
 }
 
 var temp *template.Template
 
-func outputDocument(document *gmrtd.Document) {
+func outputDocument(document *document.Document) {
 	var err error
 
 	if document == nil {
@@ -46,9 +51,9 @@ func outputDocument(document *gmrtd.Document) {
 
 	funcMap := template.FuncMap{
 		"BytesToHex":       func(bytes []byte) string { return fmt.Sprintf("%X", bytes) },
-		"TlvBytesToString": func(bytes []byte) string { return gmrtd.TlvDecode(bytes).String() },
+		"TlvBytesToString": func(bytes []byte) string { return tlv.TlvDecode(bytes).String() },
 		"BytesToBase64":    func(bytes []byte) string { return base64.StdEncoding.EncodeToString(bytes) },
-		"ApduTotalDurMs": func(apdus []gmrtd.ApduLog) int {
+		"ApduTotalDurMs": func(apdus []iso7816.ApduLog) int {
 			var totalMs int
 			for _, apdu := range apdus {
 				totalMs += apdu.DurMs
@@ -74,7 +79,7 @@ func outputDocument(document *gmrtd.Document) {
 	}
 }
 
-func getParams() (password *gmrtd.Password, debug bool, apduMaxRead uint, err error) {
+func getParams() (pass *password.Password, debug bool, apduMaxRead uint, err error) {
 	documentNo := flag.String("doc", "", "Document Number")
 	dateOfBirth := flag.String("dob", "", "Date of Birth (YYMMDD)")
 	expiryDate := flag.String("exp", "", "Expiry Date (YYMMDD)")
@@ -85,9 +90,9 @@ func getParams() (password *gmrtd.Password, debug bool, apduMaxRead uint, err er
 	flag.Parse()
 
 	if len(*documentNo) > 0 && len(*dateOfBirth) == 6 && len(*expiryDate) == 6 {
-		password = gmrtd.NewPasswordMrzi(*documentNo, *dateOfBirth, *expiryDate)
+		pass = password.NewPasswordMrzi(*documentNo, *dateOfBirth, *expiryDate)
 	} else if len(*can) > 0 {
-		password = gmrtd.NewPasswordCan(*can)
+		pass = password.NewPasswordCan(*can)
 	} else {
 		flag.PrintDefaults()
 		return nil, false, 0, fmt.Errorf("usage: must specify either doc+dob+exp *OR* can")
@@ -95,9 +100,9 @@ func getParams() (password *gmrtd.Password, debug bool, apduMaxRead uint, err er
 
 	log.Printf("Doc:%s, DOB:%s, Exp:%s, CAN:%s, Debug:%t, MaxRead:%d", *documentNo, *dateOfBirth, *expiryDate, *can, *debugFlag, *maxRead)
 
-	log.Printf("Password: %+v", password)
+	log.Printf("Password: %+v", pass)
 
-	return password, *debugFlag, *maxRead, nil
+	return pass, *debugFlag, *maxRead, nil
 }
 
 func initLogging(debug bool) {
@@ -114,12 +119,12 @@ func initLogging(debug bool) {
 
 func main() {
 
-	var password *gmrtd.Password
+	var pass *password.Password
 	var debug bool = false
 	var maxRead uint = 0
 	var err error
 
-	password, debug, maxRead, err = getParams()
+	pass, debug, maxRead, err = getParams()
 	if err != nil {
 		log.Printf("%s", err)
 		os.Exit(1)
@@ -170,7 +175,7 @@ func main() {
 		reader.SetApduMaxLe(int(maxRead))
 	}
 
-	document, err := reader.ReadDocument(transceiver, password, atr, ats)
+	document, err := reader.ReadDocument(transceiver, pass, atr, ats)
 	if err != nil {
 		// output whatever we have from the document
 		outputDocument(document)
@@ -179,7 +184,7 @@ func main() {
 	}
 
 	// TODO - should really happen before outputDocument (above).. and info should be included
-	err = gmrtd.MrtdPassiveAuth(document)
+	err = gmrtd.PassiveAuth(document)
 	if err != nil {
 		slog.Error("MrtdPassiveAuth", "error", err)
 		os.Exit(1)
