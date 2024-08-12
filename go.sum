@@ -54,6 +54,10 @@ github.com/gmrtd/gmrtd v0.0.0-20240804150410-ad0942f9038e h1:PX7/escpY+Bq7puicat
 github.com/gmrtd/gmrtd v0.0.0-20240804150410-ad0942f9038e/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
 github.com/gmrtd/gmrtd v0.0.0-20240804154717-fe91101179fb h1:vEgi9ZC09u43/ZbfnMRkuBXWQdYNCySrdZ5adaQ3gk0=
 github.com/gmrtd/gmrtd v0.0.0-20240804154717-fe91101179fb/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
+github.com/gmrtd/gmrtd v0.0.0-20240812125037-707ec1f31f2c h1:3HD2ccGSRptMuaahEU51pyxolfd24ywJwG8KjmMLrss=
+github.com/gmrtd/gmrtd v0.0.0-20240812125037-707ec1f31f2c/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
+github.com/gmrtd/gmrtd v0.0.0-20240812161507-951402263c99 h1:YdNOeak+iphgZqglCtrZU3wK9SU3XOFtYX8WYmVsUY4=
+github.com/gmrtd/gmrtd v0.0.0-20240812161507-951402263c99/go.mod h1:yMi0ExfvEj/Tb1LZ1dfAyGe7ZVuv6kasax77Oj6HD8I=
 github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c h1:+mdjkGKdHQG3305AYmdv1U2eRNDiU2ErMBj1gwrq8eQ=
 github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c/go.mod h1:7rwL4CYBLnjLxUqIJNnCWiEdr3bn6IUYi15bNlnbCCU=
 golang.org/x/sys v0.1.0 h1:kunALQeHf1/185U1i0GOB/fy1IPRDDpuoOOqRReG57U=
@@ -64,3 +68,5 @@ golang.org/x/sys v0.22.0 h1:RI27ohtqKCnwULzJLqkv897zojh5/DwS/ENaMzUOaWI=
 golang.org/x/sys v0.22.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
 golang.org/x/sys v0.23.0 h1:YfKFowiIMvtgl1UERQoTPPToxltDeZfbj4H7dVUCwmM=
 golang.org/x/sys v0.23.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+golang.org/x/sys v0.24.0 h1:Twjiwq9dn6R1fQcyiK+wQyHWfaz/BJB+YIpzU/Cv3Xg=
+golang.org/x/sys v0.24.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
