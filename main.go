@@ -24,14 +24,14 @@ type PCSCTransceiver struct {
 	card pcsc.Card
 }
 
-func (transceiver *PCSCTransceiver) Transceive(cApdu []byte) (rApduBytes []byte) {
-	rApduBytes, err := transceiver.card.Apdu(cApdu)
+func (transceiver *PCSCTransceiver) Transceive(cla int, ins int, p1 int, p2 int, data []byte, le int, encodedData []byte) (rApduBytes []byte) {
+	rApduBytes, err := transceiver.card.Apdu(encodedData)
 	if err != nil {
 		slog.Error("Transceive", "error", err)
 		return
 	}
 
-	slog.Debug("Transceive", "cApdu", utils.BytesToHex(cApdu), "rApdu", utils.BytesToHex(rApduBytes))
+	slog.Debug("Transceive", "cApdu", utils.BytesToHex(encodedData), "rApdu", utils.BytesToHex(rApduBytes))
 
 	return
 }
@@ -118,7 +118,6 @@ func initLogging(debug bool) {
 }
 
 func main() {
-
 	var pass *password.Password
 	var debug bool = false
 	var maxRead uint = 0
