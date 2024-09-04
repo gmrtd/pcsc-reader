@@ -38,6 +38,24 @@ ATR: {{.Atr | BytesToHex}}
 ATS: {{.Ats | BytesToHex}}
 </pre></div>
 
+<h2>Passive Authentication (SOD)</h2>
+{{if .PassiveAuthSOD}}
+    {{ range .PassiveAuthSOD.CertChain }}
+        {{template "fileHexAndTlv" .}}
+    {{ end }}
+{{else}}
+<i>No data</i>
+{{end}}
+
+<h2>Passive Authentication (CardSecurity)</h2>
+{{if .PassiveAuthCardSec}}
+    {{ range .PassiveAuthCardSec.CertChain }}
+        {{template "fileHexAndTlv" .}}
+    {{ end }}
+{{else}}
+<i>No data</i>
+{{end}}
+
 <h2>CardAccess</h2>
 {{if .Mf.CardAccess}}
 {{template "fileHexAndTlv" .Mf.CardAccess.RawData}}
