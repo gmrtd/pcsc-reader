@@ -22,7 +22,7 @@ h2 {
 </pre></div>
 {{end}}
 
-<h1>GMRTD</h1>
+<h1><a href="https://github.com/gmrtd/gmrtd">GMRTD</a></h1>
 
 <div><pre>
 LDS version: <b>{{.LdsVersion}}</b>
@@ -38,7 +38,7 @@ ATR: {{.Atr | BytesToHex}}
 ATS: {{.Ats | BytesToHex}}
 </pre></div>
 
-<h2>Passive Authentication (SOD)</h2>
+<h2>Passive Authentication <sub>SOD</sub></h2>
 {{if .PassiveAuthSOD}}
     {{ range .PassiveAuthSOD.CertChain }}
         {{template "fileHexAndTlv" .}}
@@ -47,7 +47,7 @@ ATS: {{.Ats | BytesToHex}}
 <i>No data</i>
 {{end}}
 
-<h2>Passive Authentication (CardSecurity)</h2>
+<h2>Passive Authentication <sub>CardSecurity</sub></h2>
 {{if .PassiveAuthCardSec}}
     {{ range .PassiveAuthCardSec.CertChain }}
         {{template "fileHexAndTlv" .}}
