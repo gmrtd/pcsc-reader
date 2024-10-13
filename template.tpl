@@ -230,5 +230,11 @@ Dur(ms): <b>{{ .DurMs }}</b>
 <hr>
 {{ end }}
 
+<h1>Document JSON</h1>
+
+<div><pre>
+{{ .IndentedJson }}
+</pre></div>
+
 </body>
 </html>
