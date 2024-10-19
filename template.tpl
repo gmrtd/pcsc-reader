@@ -24,6 +24,8 @@ h2 {
 
 <h1><a href="https://github.com/gmrtd/gmrtd">GMRTD</a></h1>
 
+<a href="#json">JSON</a>
+
 <div><pre>
 LDS version: <b>{{.LdsVersion}}</b>
 Unicode version: <b>{{.UnicodeVersion}}</b>
@@ -230,11 +232,14 @@ Dur(ms): <b>{{ .DurMs }}</b>
 <hr>
 {{ end }}
 
+<div id="json">
 <h1>Document JSON</h1>
 
 <div><pre>
 {{ .IndentedJson }}
 </pre></div>
+
+</div>
 
 </body>
 </html>
