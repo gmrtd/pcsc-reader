@@ -22,6 +22,12 @@ h2 {
 </pre></div>
 {{end}}
 
+{{define "fileHex"}}
+<div><pre>
+{{. | BytesToHex}}
+</pre></div>
+{{end}}
+
 <h1><a href="https://github.com/gmrtd/gmrtd">GMRTD</a></h1>
 
 <a href="#json">JSON</a>
@@ -120,7 +126,7 @@ OptionalData2 : {{.Mf.Lds1.Dg1.Mrz.OptionalData2}}
 <!-- TODO - would be good got DG2 to provide an easier way to access the images -->
 {{ range .Mf.Lds1.Dg2.BITs }}
     {{ range .BDB.Facial.Images }}
-        <img src="data:image/jpeg;base64,{{.Data | BytesToBase64}}" />
+        <img src="data:image/jpeg;base64, {{.Data | BytesToBase64}}" />
         <br/>
         Image size (bytes): {{len .Data}}
     {{ end }}
@@ -185,7 +191,10 @@ PersoSystemSerialNumber    : {{.Mf.Lds1.Dg12.Details.PersoSystemSerialNumber}}
 
 <h2>DG13 <sub>Optional Detail(s)</sub></h2>
 {{if .Mf.Lds1.Dg13}}
-{{template "fileHexAndTlv" .Mf.Lds1.Dg13.RawData}}
+{{template "fileHex" .Mf.Lds1.Dg13.RawData}}
+
+Content:
+{{template "fileHex" .Mf.Lds1.Dg13.Content}}
 {{else}}
 <i>No data</i>
 {{end}}
