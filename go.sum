@@ -6,6 +6,8 @@ github.com/ebfe/scard v0.0.0-20241214075232-7af069cabc25 h1:vXmXuiy1tgifTqWAAaU+
 github.com/ebfe/scard v0.0.0-20241214075232-7af069cabc25/go.mod h1:BkYEeWL6FbT4Ek+TcOBnPzEKnL7kOq2g19tTQXkorHY=
 github.com/gmrtd/gmrtd v0.0.0-20250104055757-4c7e2dd63c8b h1:8zCcPZ9KFUsXPdoc16KjXR1wzPA/CA0bpgQRkVkFae0=
 github.com/gmrtd/gmrtd v0.0.0-20250104055757-4c7e2dd63c8b/go.mod h1:4nNdq1hzi13Xe/YS6S+W8FOaCYdCu6a/6+U8bZeUPXQ=
+github.com/gmrtd/gmrtd v0.0.0-20250126192208-9aa24812014d h1:oe3Owhwi7gW5adfvqMfQk2fe+9AFX2tfCMRXrY1EsU0=
+github.com/gmrtd/gmrtd v0.0.0-20250126192208-9aa24812014d/go.mod h1:4nNdq1hzi13Xe/YS6S+W8FOaCYdCu6a/6+U8bZeUPXQ=
 github.com/osanderson/brainpool v0.0.0-20240902133831-007b606d9412 h1:tB1lzcw4iTpErf0TOKINVm+Xkwyr67BRIaeXhUm4dNQ=
 github.com/osanderson/brainpool v0.0.0-20240902133831-007b606d9412/go.mod h1:LUYLv8+wgWKKP+MZcvXJ+BkQlpakINAEAMOwG9OL66Y=
 github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c h1:+mdjkGKdHQG3305AYmdv1U2eRNDiU2ErMBj1gwrq8eQ=
@@ -13,3 +15,5 @@ github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c/go.mod h1:7rwL4CYBLnjL
 golang.org/x/sys v0.1.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.28.0 h1:Fksou7UEQUWlKvIdsqzJmUmCX3cZuD2+P3XyyzwMhlA=
 golang.org/x/sys v0.28.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+golang.org/x/sys v0.29.0 h1:TPYlXGxvx1MGTn2GiZDhnjPA9wZzZeGKHHmKhHYvgaU=
+golang.org/x/sys v0.29.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=

@@ -51,7 +51,7 @@ func outputDocument(document *document.Document) {
 
 	funcMap := template.FuncMap{
 		"BytesToHex":       func(bytes []byte) string { return fmt.Sprintf("%X", bytes) },
-		"TlvBytesToString": func(bytes []byte) string { return tlv.TlvDecode(bytes).String() },
+		"TlvBytesToString": func(bytes []byte) string { return tlv.Decode(bytes).String() },
 		"BytesToBase64":    func(bytes []byte) string { return base64.StdEncoding.EncodeToString(bytes) },
 		"ApduTotalDurMs": func(apdus []iso7816.ApduLog) int {
 			var totalMs int
