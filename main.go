@@ -182,7 +182,16 @@ func main() {
 		os.Exit(1)
 	}
 
-	// TODO - should really happen before outputDocument (above).. and info should be included
+	// verify the document
+	err = document.Verify()
+	if err != nil {
+		// output whatever we have from the document
+		outputDocument(document)
+		slog.Error("Document.Verify", "error", err)
+		os.Exit(1)
+	}
+
+	// perforn passive authentication
 	err = gmrtd.PassiveAuth(document)
 	if err != nil {
 		slog.Error("MrtdPassiveAuth", "error", err)
