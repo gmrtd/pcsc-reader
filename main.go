@@ -79,13 +79,14 @@ func outputDocument(document *document.Document) {
 	}
 }
 
-func getParams() (pass *password.Password, debug bool, apduMaxRead uint, err error) {
+func getParams() (pass *password.Password, debug bool, apduMaxRead uint, skipPace bool, err error) {
 	documentNo := flag.String("doc", "", "Document Number")
 	dateOfBirth := flag.String("dob", "", "Date of Birth (YYMMDD)")
 	expiryDate := flag.String("exp", "", "Expiry Date (YYMMDD)")
 	can := flag.String("can", "", "Card Access Number")
 	debugFlag := flag.Bool("debug", false, "Debug")
 	maxRead := flag.Uint("maxRead", 0, "Maximum read amount (bytes) e.g. 1..65536")
+	skipPaceFlag := flag.Bool("skipPace", false, "Skip PACE")
 
 	flag.Parse()
 
@@ -95,14 +96,14 @@ func getParams() (pass *password.Password, debug bool, apduMaxRead uint, err err
 		pass = password.NewPasswordCan(*can)
 	} else {
 		flag.PrintDefaults()
-		return nil, false, 0, fmt.Errorf("usage: must specify either doc+dob+exp *OR* can")
+		return nil, false, 0, false, fmt.Errorf("usage: must specify either doc+dob+exp *OR* can")
 	}
 
 	log.Printf("Doc:%s, DOB:%s, Exp:%s, CAN:%s, Debug:%t, MaxRead:%d", *documentNo, *dateOfBirth, *expiryDate, *can, *debugFlag, *maxRead)
 
 	log.Printf("Password: %+v", pass)
 
-	return pass, *debugFlag, *maxRead, nil
+	return pass, *debugFlag, *maxRead, *skipPaceFlag, nil
 }
 
 func initLogging(debug bool) {
@@ -121,9 +122,10 @@ func main() {
 	var pass *password.Password
 	var debug bool = false
 	var maxRead uint = 0
+	var skipPace bool = false
 	var err error
 
-	pass, debug, maxRead, err = getParams()
+	pass, debug, maxRead, skipPace, err = getParams()
 	if err != nil {
 		log.Printf("%s", err)
 		os.Exit(1)
@@ -172,6 +174,11 @@ func main() {
 	// set APDU Max Read (if specified)
 	if maxRead > 0 {
 		reader.SetApduMaxLe(int(maxRead))
+	}
+
+	// skip PACE (if specified)
+	if skipPace {
+		reader.SkipPace()
 	}
 
 	document, err := reader.ReadDocument(transceiver, pass, atr, ats)

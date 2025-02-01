@@ -4,7 +4,7 @@ go 1.22.1
 
 require (
 	github.com/dumacp/smartcard v0.1.6
-	github.com/gmrtd/gmrtd v0.0.0-20250130232254-afc67d93e1ba
+	github.com/gmrtd/gmrtd v0.0.0-20250201185032-e89b448d266b
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
 )
 
