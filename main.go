@@ -11,10 +11,11 @@ import (
 	"os"
 
 	"github.com/dumacp/smartcard/pcsc"
-	"github.com/gmrtd/gmrtd"
 	"github.com/gmrtd/gmrtd/document"
 	"github.com/gmrtd/gmrtd/iso7816"
+	"github.com/gmrtd/gmrtd/passiveauth"
 	"github.com/gmrtd/gmrtd/password"
+	"github.com/gmrtd/gmrtd/reader"
 	"github.com/gmrtd/gmrtd/tlv"
 	"github.com/gmrtd/gmrtd/utils"
 	"github.com/pkg/browser"
@@ -169,7 +170,7 @@ func main() {
 
 	transceiver.card = card
 
-	var reader *gmrtd.Reader = gmrtd.NewReader()
+	var reader *reader.Reader = reader.NewReader()
 
 	// set APDU Max Read (if specified)
 	if maxRead > 0 {
@@ -199,7 +200,7 @@ func main() {
 	}
 
 	// perforn passive authentication
-	err = gmrtd.PassiveAuth(document)
+	err = passiveauth.PassiveAuth(document)
 	if err != nil {
 		slog.Error("MrtdPassiveAuth", "error", err)
 		os.Exit(1)
