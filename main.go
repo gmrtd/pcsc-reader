@@ -13,7 +13,6 @@ import (
 	"github.com/dumacp/smartcard/pcsc"
 	"github.com/gmrtd/gmrtd/document"
 	"github.com/gmrtd/gmrtd/iso7816"
-	"github.com/gmrtd/gmrtd/passiveauth"
 	"github.com/gmrtd/gmrtd/password"
 	"github.com/gmrtd/gmrtd/reader"
 	"github.com/gmrtd/gmrtd/tlv"
@@ -191,27 +190,12 @@ func main() {
 		reader.SkipPace()
 	}
 
+	// read (and verify) the document (inc passive-authentication)
 	document, err := reader.ReadDocument(transceiver, pass, atr, ats)
 	if err != nil {
 		// output whatever we have from the document
 		outputDocument(document)
 		slog.Error("ReadDocument", "error", err)
-		os.Exit(1)
-	}
-
-	// verify the document
-	err = document.Verify()
-	if err != nil {
-		// output whatever we have from the document
-		outputDocument(document)
-		slog.Error("Document.Verify", "error", err)
-		os.Exit(1)
-	}
-
-	// perforn passive authentication
-	err = passiveauth.PassiveAuth(document)
-	if err != nil {
-		slog.Error("MrtdPassiveAuth", "error", err)
 		os.Exit(1)
 	}
 
