@@ -37,6 +37,13 @@ func (transceiver *PCSCTransceiver) Transceive(cla int, ins int, p1 int, p2 int,
 	return
 }
 
+type PCSCReaderStatus struct {
+}
+
+func (status *PCSCReaderStatus) Status(msg string) {
+	slog.Info("Status", "msg", msg)
+}
+
 var temp *template.Template
 
 func outputDocument(document *document.Document) {
@@ -170,7 +177,9 @@ func main() {
 
 	transceiver.card = card
 
-	var reader *reader.Reader = reader.NewReader()
+	var status *PCSCReaderStatus = new(PCSCReaderStatus)
+
+	var reader *reader.Reader = reader.NewReader(status)
 
 	// set APDU Max Read (if specified)
 	if maxRead > 0 {
