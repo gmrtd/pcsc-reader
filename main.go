@@ -98,7 +98,10 @@ func getParams() (pass *password.Password, debug bool, apduMaxRead uint, skipPac
 	flag.Parse()
 
 	if len(*documentNo) > 0 && len(*dateOfBirth) == 6 && len(*expiryDate) == 6 {
-		pass = password.NewPasswordMrzi(*documentNo, *dateOfBirth, *expiryDate)
+		pass, err = password.NewPasswordMrzi(*documentNo, *dateOfBirth, *expiryDate)
+		if err != nil {
+			return nil, false, 0, false, err
+		}
 	} else if len(*can) > 0 {
 		pass = password.NewPasswordCan(*can)
 	} else {

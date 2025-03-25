@@ -6,7 +6,7 @@ toolchain go1.24.1
 
 require (
 	github.com/dumacp/smartcard v0.1.7
-	github.com/gmrtd/gmrtd v0.0.0-20250322124550-d6d2346fd208
+	github.com/gmrtd/gmrtd v0.0.0-20250325151712-414007502d82
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
 )
 
