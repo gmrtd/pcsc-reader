@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"embed"
 	"encoding/base64"
 	"flag"
 	"fmt"
@@ -19,6 +20,9 @@ import (
 	"github.com/gmrtd/gmrtd/utils"
 	"github.com/pkg/browser"
 )
+
+//go:embed templates/*
+var templateFS embed.FS
 
 type PCSCTransceiver struct {
 	card pcsc.Card
@@ -43,7 +47,7 @@ func (status *PCSCReaderStatus) Status(msg string) {
 	slog.Info("Status", "msg", msg)
 }
 
-var temp *template.Template
+var tmpl *template.Template
 
 func outputDocument(document *document.Document) {
 	var err error
@@ -69,12 +73,15 @@ func outputDocument(document *document.Document) {
 		},
 	}
 
-	temp = template.Must(template.New("template.tpl").Funcs(funcMap).ParseFiles("template.tpl"))
+	tmpl, err = template.New("").Funcs(funcMap).ParseFS(templateFS, "templates/*.html")
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	byteBuf := bytes.NewBuffer(nil)
 
 	// convert to HTML using template
-	err = temp.Execute(byteBuf, document)
+	err = tmpl.ExecuteTemplate(byteBuf, "output.html", document)
 	if err != nil {
 		log.Fatalln(err)
 	}
