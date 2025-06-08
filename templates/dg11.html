@@ -1,0 +1,27 @@
+{{define "dg11"}}
+
+<h2>DG11 <sub>Additional Personal Detail(s)</sub></h2>
+{{if .}}
+{{template "fileHexAndTlv" .RawData}}
+
+<div><pre>
+NameOfHolder        : {{.Details.NameOfHolder}}
+OtherNames          : {{.Details.OtherNames}}
+PersonalNumber      : {{.Details.PersonalNumber}}
+FullDateOfBirth     : {{.Details.FullDateOfBirth}}
+PlaceOfBirth        : {{.Details.PlaceOfBirth}}
+Address             : {{.Details.Address}}
+Telephone           : {{.Details.Telephone}}
+Profession          : {{.Details.Profession}}
+Title               : {{.Details.Title}}
+PersonalSummary     : {{.Details.PersonalSummary}}
+ProofOfCitizenship  : {{.Details.ProofOfCitizenship | BytesToHex}}
+OtherTravelDocuments: {{.Details.OtherTravelDocuments}}
+CustodyInformation  : {{.Details.CustodyInformation}}
+</div></pre>
+
+{{else}}
+<i>No data</i>
+{{end}}
+
+{{end}}

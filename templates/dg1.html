@@ -1,0 +1,22 @@
+{{define "dg1"}}
+
+<h2>DG1 <sub>Machine Readable Zone Information</sub></h2>
+{{if .}}
+{{template "fileHexAndTlv" .RawData}}
+<div><pre>
+DocumentCode  : {{.Mrz.DocumentCode}}
+IssuingState  : {{.Mrz.IssuingState}}
+NameOfHolder  : [Primary] {{.Mrz.NameOfHolder.Primary}} [Secondary] {{.Mrz.NameOfHolder.Secondary}}
+DocumentNumber: {{.Mrz.DocumentNumber}}
+Nationality   : {{.Mrz.Nationality}}
+DateOfBirth   : {{.Mrz.DateOfBirth}}
+Sex           : {{.Mrz.Sex}}
+DateOfExpiry  : {{.Mrz.DateOfExpiry}}
+OptionalData  : {{.Mrz.OptionalData}}
+OptionalData2 : {{.Mrz.OptionalData2}}
+</pre></div>
+{{else}}
+<i>No data</i>
+{{end}}
+
+{{end}}

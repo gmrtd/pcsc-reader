@@ -1,0 +1,23 @@
+{{define "dg12"}}
+
+<h2>DG12 <sub>Additional Document Detail(s)</sub></h2>
+{{if .}}
+{{template "fileHexAndTlv" .RawData}}
+
+<div><pre>
+IssuingAuthority           : {{.Details.IssuingAuthority}}
+DateOfIssue                : {{.Details.DateOfIssue}}
+OtherPersons               : {{.Details.OtherPersons}}
+EndorsementsAndObservations: {{.Details.EndorsementsAndObservations}}
+TaxExitRequirements        : {{.Details.TaxExitRequirements}}
+ImageFront                 : {{.Details.ImageFront | BytesToHex}}
+ImageRear                  : {{.Details.ImageRear | BytesToHex}}
+PersoDateTime              : {{.Details.PersoDateTime}}
+PersoSystemSerialNumber    : {{.Details.PersoSystemSerialNumber}}
+</pre></div>
+
+{{else}}
+<i>No data</i>
+{{end}}
+
+{{end}}
