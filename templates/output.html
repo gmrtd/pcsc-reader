@@ -64,40 +64,11 @@ ATS: {{.Ats | BytesToHex}}
 <i>No data</i>
 {{end}}
 
-<h2>CardAccess</h2>
-{{if .Mf.CardAccess}}
-{{template "fileHexAndTlv" .Mf.CardAccess.RawData}}
-{{else}}
-<i>No data</i>
-{{end}}
-
-<h2>CardSecurity</h2>
-{{if .Mf.CardSecurity}}
-{{template "fileHexAndTlv" .Mf.CardSecurity.RawData}}
-{{else}}
-<i>No data</i>
-{{end}}
-
-<h2>DIR</h2>
-{{if .Mf.Dir}}
-{{template "fileHexAndTlv" .Mf.Dir.RawData}}
-{{else}}
-<i>No data</i>
-{{end}}
-
-<h2>COM</h2>
-{{if .Mf.Lds1.Com}}
-{{template "fileHexAndTlv" .Mf.Lds1.Com.RawData}}
-{{else}}
-<i>No data</i>
-{{end}}
-
-<h2>SOD <sub>Document Security Object</sub></h2>
-{{if .Mf.Lds1.Sod}}
-{{template "fileHexAndTlv" .Mf.Lds1.Sod.RawData}}
-{{else}}
-<i>No data</i>
-{{end}}
+{{template "cardAccess" .Mf.CardAccess}}
+{{template "cardSecurity" .Mf.CardSecurity}}
+{{template "dir" .Mf.Dir}}
+{{template "com" .Mf.Lds1.Com}}
+{{template "sod" .Mf.Lds1.Sod}}
 
 {{template "dg1" .Mf.Lds1.Dg1}}
 {{template "dg2" .Mf.Lds1.Dg2}}
@@ -109,26 +80,7 @@ ATS: {{.Ats | BytesToHex}}
 {{template "dg15" .Mf.Lds1.Dg15}}
 {{template "dg16" .Mf.Lds1.Dg16}}
 
-<h1>APDU LOG</h1>
-
-<h2>Count: {{len .Apdus}}</h2>
-<h2>Duration(ms): {{.Apdus | ApduTotalDurMs}}</h2>
-
-{{ range .Apdus }}
-<div><pre>
-Desc: <b>{{ .Desc }}</b>
-Dur(ms): <b>{{ .DurMs }}</b>
-</pre></div>
-<div><pre>
--> {{ .Tx | BytesToHex }}
-    {{if .Child}}
---> {{ .Child.Tx | BytesToHex }}
-<-- {{ .Child.Rx | BytesToHex }}
-    {{end}}
-<- {{ .Rx | BytesToHex }}
-</pre></div>
-<hr>
-{{ end }}
+{{template "apduLog" .Apdus}}
 
 <div id="json">
 <h1>Document JSON</h1>
