@@ -107,13 +107,7 @@ ATS: {{.Ats | BytesToHex}}
 {{template "dg13" .Mf.Lds1.Dg13}}
 {{template "dg14" .Mf.Lds1.Dg14}}
 {{template "dg15" .Mf.Lds1.Dg15}}
-
-<h2>DG16 <sub>Person(s) to Notify</sub></h2>
-{{if .Mf.Lds1.Dg16}}
-{{template "fileHexAndTlv" .Mf.Lds1.Dg16.RawData}}
-{{else}}
-<i>No data</i>
-{{end}}
+{{template "dg16" .Mf.Lds1.Dg16}}
 
 <h1>APDU LOG</h1>
 
