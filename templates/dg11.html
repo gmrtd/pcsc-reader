@@ -4,21 +4,70 @@
 {{if .}}
 {{template "fileHexAndTlv" .RawData}}
 
-<div><pre>
-NameOfHolder        : {{.Details.NameOfHolder}}
-OtherNames          : {{.Details.OtherNames}}
-PersonalNumber      : {{.Details.PersonalNumber}}
-FullDateOfBirth     : {{.Details.FullDateOfBirth}}
-PlaceOfBirth        : {{.Details.PlaceOfBirth}}
-Address             : {{.Details.Address}}
-Telephone           : {{.Details.Telephone}}
-Profession          : {{.Details.Profession}}
-Title               : {{.Details.Title}}
-PersonalSummary     : {{.Details.PersonalSummary}}
-ProofOfCitizenship  : {{.Details.ProofOfCitizenship | BytesToHex}}
-OtherTravelDocuments: {{.Details.OtherTravelDocuments}}
-CustodyInformation  : {{.Details.CustodyInformation}}
-</div></pre>
+<div>
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Name Of Holder</td>
+      <td>{{.Details.NameOfHolder}}</td>
+    </tr>
+    <tr>
+      <td>Other Names</td>
+      <td>{{.Details.OtherNames}}</td>
+    </tr>
+    <tr>
+      <td>Personal Number</td>
+      <td>{{.Details.PersonalNumber}}</td>
+    </tr>
+    <tr>
+      <td>Full Date Of Birth</td>
+      <td>{{.Details.FullDateOfBirth}}</td>
+    </tr>
+    <tr>
+      <td>Place Of Birth</td>
+      <td>{{.Details.PlaceOfBirth}}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{.Details.Address}}</td>
+    </tr>
+    <tr>
+      <td>Telephone</td>
+      <td>{{.Details.Telephone}}</td>
+    </tr>
+    <tr>
+      <td>Profession</td>
+      <td>{{.Details.Profession}}</td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td>{{.Details.Title}}</td>
+    </tr>
+    <tr>
+      <td>Personal Summary</td>
+      <td>{{.Details.PersonalSummary}}</td>
+    </tr>
+    <tr>
+      <td>Proof Of Citizenship</td>
+      <td>{{.Details.ProofOfCitizenship | BytesToHex}}</td>
+    </tr>
+    <tr>
+      <td>Other Travel Documents</td>
+      <td>{{.Details.OtherTravelDocuments}}</td>
+    </tr>
+    <tr>
+      <td>Custody Information</td>
+      <td>{{.Details.CustodyInformation}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 {{else}}
 <i>No data</i>
