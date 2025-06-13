@@ -62,21 +62,59 @@ table.striped tbody tr:hover {
 
 <h1><a href="https://github.com/gmrtd/gmrtd">GMRTD</a></h1>
 
+<div>
 <a href="#json">JSON</a>
+</div>
 
-<div><pre>
-LDS version: <b>{{.LdsVersion}}</b>
-Unicode version: <b>{{.UnicodeVersion}}</b>
-</pre></div>
+<br/>
 
-<div><pre>
-ChipAuthStatus: <b>{{.ChipAuthStatus}}</b>
-</pre></div>
+<div>
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LDS version</td>
+      <td>{{.LdsVersion}}</td>
+    </tr>
+    <tr>
+      <td>Unicode version</td>
+      <td>{{.UnicodeVersion}}</td>
+    </tr>
+    <tr>
+      <td>ATR</td>
+      <td>{{.Atr | BytesToHex}}</td>
+    </tr>
+    <tr>
+      <td>ATS</td>
+      <td>{{.Ats | BytesToHex}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-<div><pre>
-ATR: {{.Atr | BytesToHex}}
-ATS: {{.Ats | BytesToHex}}
-</pre></div>
+<br/>
+
+<div>
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ChipAuthStatus</td>
+      <td>{{.ChipAuthStatus}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 <h2>Passive Authentication <sub>SOD</sub></h2>
 {{if .PassiveAuthSOD}}
