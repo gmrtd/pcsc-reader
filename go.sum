@@ -26,6 +26,8 @@ github.com/gmrtd/gmrtd v0.0.0-20250518084322-6b231225274e h1:MrANCwYYl204HtBOHVy
 github.com/gmrtd/gmrtd v0.0.0-20250518084322-6b231225274e/go.mod h1:4nNdq1hzi13Xe/YS6S+W8FOaCYdCu6a/6+U8bZeUPXQ=
 github.com/gmrtd/gmrtd v0.0.0-20250518085616-b7a6424611f7 h1:9ulUVQ33dLPV9Kcuk2oE17CU8IGwGnqb3OVFwnlnMPs=
 github.com/gmrtd/gmrtd v0.0.0-20250518085616-b7a6424611f7/go.mod h1:4nNdq1hzi13Xe/YS6S+W8FOaCYdCu6a/6+U8bZeUPXQ=
+github.com/gmrtd/gmrtd v0.0.0-20250621045940-333f232b6c00 h1:7Ck6qwPfEfrF46SomjFSVIiwX/R7RnvfuyXWdtiorq8=
+github.com/gmrtd/gmrtd v0.0.0-20250621045940-333f232b6c00/go.mod h1:4nNdq1hzi13Xe/YS6S+W8FOaCYdCu6a/6+U8bZeUPXQ=
 github.com/osanderson/brainpool v0.0.0-20240902133831-007b606d9412 h1:tB1lzcw4iTpErf0TOKINVm+Xkwyr67BRIaeXhUm4dNQ=
 github.com/osanderson/brainpool v0.0.0-20240902133831-007b606d9412/go.mod h1:LUYLv8+wgWKKP+MZcvXJ+BkQlpakINAEAMOwG9OL66Y=
 github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c h1:+mdjkGKdHQG3305AYmdv1U2eRNDiU2ErMBj1gwrq8eQ=
