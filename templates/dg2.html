@@ -3,13 +3,10 @@
 <h2>DG2 <sub>Encoded Identification Features - Face</sub></h2>
 {{if .}}
 {{template "fileHexAndTlv" .RawData}}
-<!-- TODO - would be good to get DG2 to provide an easier way to access the images -->
-{{ range .BITs }}
-    {{ range .BDB.Facial.Images }}
-        <img src="data:image/jpeg;base64, {{.Data | BytesToBase64}}" />
-        <br/>
-        Image size (bytes): {{len .Data}}
-    {{ end }}
+{{ range .Images }}
+    <img src="data:image/jpeg;base64, {{. | BytesToBase64}}" />
+    <br/>
+    Image size (bytes): {{len .}}
 {{ end }}
 {{else}}
 <i>No data</i>
